@@ -9,11 +9,11 @@ export default async function handler(req, res) {
   if (!name || !phone || !city || !details) return res.status(400).json({ error: 'missing fields' });
   const text = `NEW JUNK LEAD\n${name} ${phone}\n${email || ''}\n${city}\nWhen: ${timing}\n${details}`;
   const jobs = [];
-  if (process.env.RESEND_API_KEY && process.env.LEAD_EMAIL_TO)
+  if (process.env.RESEND_API_KEY)
     jobs.push(fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: process.env.LEAD_EMAIL_FROM || 'leads@resend.dev', to: process.env.LEAD_EMAIL_TO.split(','), subject: `New junk lead: ${name} (${city})`, text }),
+      body: JSON.stringify({ from: process.env.LEAD_EMAIL_FROM || 'leads@resend.dev', to: (process.env.LEAD_EMAIL_TO || 'junkjunkiesflorida@gmail.com').split(','), subject: `New junk lead: ${name} (${city})`, text }),
     }));
   if (process.env.TWILIO_SID && process.env.TWILIO_TOKEN && process.env.TWILIO_FROM)
     jobs.push(fetch(`https://api.twilio.com/2010-04-01/Accounts/${process.env.TWILIO_SID}/Messages.json`, {
