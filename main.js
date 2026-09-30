@@ -9,5 +9,5 @@ f.addEventListener('submit',async e=>{
     const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
     if(!r.ok)throw 0;
     f.reset();m.textContent="✅ Got it! Aaron will contact you shortly.";
-  }catch{m.textContent='Something went wrong — please call or text (346) 413-9644.';}
+  }catch{m.textContent='Something went wrong — please try again in a minute.';}
 });
