@@ -1,16 +1,15 @@
-import { neon } from '@neondatabase/serverless';
+import { get, put } from '@vercel/blob';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
-export const sql = neon(process.env.DATABASE_URL || '');
-let ready;
-export function init() {
-  return (ready ||= sql`CREATE TABLE IF NOT EXISTS jobs (
-    id SERIAL PRIMARY KEY, created_at TIMESTAMPTZ DEFAULT now(),
-    name TEXT, phone TEXT, email TEXT, address TEXT, city TEXT, service TEXT, details TEXT,
-    status TEXT DEFAULT 'lead', scheduled_at TIMESTAMPTZ, completed_at TIMESTAMPTZ,
-    price NUMERIC, notes TEXT, lat DOUBLE PRECISION, lng DOUBLE PRECISION,
-    published BOOLEAN DEFAULT false, title TEXT, photo TEXT)`);
+// Tiny JSON "database" stored as one private Vercel Blob (BLOB_READ_WRITE_TOKEN is set by the project's blob store).
+const FILE = 'data/jobs.json';
+export async function readDb() {
+  const r = await get(FILE, { access: 'private', useCache: false }).catch(() => null);
+  if (!r || r.statusCode !== 200) return { next: 1, jobs: [] };
+  return JSON.parse(await new Response(r.stream).text());
 }
+export const writeDb = db =>
+  put(FILE, JSON.stringify(db), { access: 'private', allowOverwrite: true, addRandomSuffix: false, contentType: 'application/json', cacheControlMaxAge: 0 });
 
 const secret = () => process.env.SESSION_SECRET || process.env.ADMIN_PASSWORD || 'unset';
 const sign = v => createHmac('sha256', secret()).update(v).digest('hex');

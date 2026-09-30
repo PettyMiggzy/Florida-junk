@@ -1,8 +1,11 @@
-import { sql, init } from './_lib.js';
+import { readDb } from './_lib.js';
 // Public: only completed jobs the owner chose to publish. Location is fuzzed to ~1km, no customer details.
 export default async function handler(req, res) {
-  await init();
-  const rows = await sql`SELECT id, title, service, city, completed_at, lat, lng, photo FROM jobs WHERE published AND status='completed' AND lat IS NOT NULL ORDER BY completed_at DESC NULLS LAST LIMIT 200`;
+  const { jobs } = await readDb();
+  const pub = jobs.filter(j => j.published && j.status === 'completed' && j.lat != null)
+    .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at)).slice(0, 200)
+    .map(j => ({ id: j.id, title: j.title, service: j.service, city: j.city, completed_at: j.completed_at, photo: j.photo,
+      lat: Math.round(j.lat * 100) / 100, lng: Math.round(j.lng * 100) / 100 }));
   res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
-  res.status(200).json({ jobs: rows.map(r => ({ ...r, lat: Math.round(r.lat * 100) / 100, lng: Math.round(r.lng * 100) / 100 })) });
+  res.status(200).json({ jobs: pub });
 }

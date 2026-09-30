@@ -1,1 +1,1 @@
-{"name":"junk-junkies-florida","private":true,"type":"module","dependencies":{"@neondatabase/serverless":"^1.0.0"}}
+{"name":"junk-junkies-florida","private":true,"type":"module","dependencies":{"@vercel/blob":"^2.8.0"}}
