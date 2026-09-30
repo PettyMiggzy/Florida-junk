@@ -65,7 +65,7 @@ $('#next').onclick=()=>{calDate=new Date(calDate.getFullYear(),calDate.getMonth(
 const COL={lead:'#ffb020',scheduled:'#4db8ff',completed:'#39ff14',cancelled:'#ff4d4d'};
 function drawMap(){
   if(!map){map=L.map('map').setView([28.11,-81.62],9);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(map);layer=L.layerGroup().addTo(map)}
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key=cb1_45ku_1_83da3050619fc32faad2506e',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(map);layer=L.layerGroup().addTo(map)}
   setTimeout(()=>map.invalidateSize(),50);layer.clearLayers();const pts=[];
   jobs.filter(j=>j.lat!=null&&j.lng!=null&&j.status!=='cancelled').forEach(j=>{
     const icon=L.divIcon({className:'',html:`<div class="pin" style="background:${COL[j.status]};color:${COL[j.status]};${j.published?'outline:2px solid #fff':''}"></div>`,iconSize:[18,18]});

@@ -28,7 +28,7 @@ f.addEventListener('submit',async e=>{
   const css=document.createElement('link');css.rel='stylesheet';css.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(css);
   const js=document.createElement('script');js.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
   js.onload=()=>{const map=L.map('pubmap',{scrollWheelZoom:false}).setView([28.11,-81.62],9);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO'}).addTo(map);
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key=cb1_45ku_1_83da3050619fc32faad2506e',{attribution:'© OpenStreetMap © CARTO'}).addTo(map);
     const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const icon=L.divIcon({className:'',html:'<div style="width:18px;height:18px;border-radius:50%;background:#39ff14;border:3px solid #050505;box-shadow:0 0 16px #39ff14"></div>',iconSize:[18,18]});
     const pts=jobs.map(j=>{L.marker([j.lat,j.lng],{icon}).addTo(map).bindPopup(`${j.photo?`<img src="${j.photo}" style="width:200px;border-radius:8px;display:block;margin-bottom:6px">`:''}<b>${esc(j.title||j.service)}</b><br>${esc(j.city)}`);return[j.lat,j.lng]});
