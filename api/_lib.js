@@ -16,8 +16,10 @@ const sign = v => createHmac('sha256', secret()).update(v).digest('hex');
 export function makeToken() { const exp = Date.now() + 7 * 864e5; return `${exp}.${sign(String(exp))}`; }
 export function isAdmin(req) {
   const m = /(?:^|;\s*)jj_admin=([^;]+)/.exec(req.headers.cookie || '');
-  if (!m) return false;
-  const [exp, sig] = m[1].split('.');
+  const bearer = /^Bearer (.+)$/.exec(req.headers.authorization || '');
+  const tok = m?.[1] || bearer?.[1];
+  if (!tok) return false;
+  const [exp, sig] = tok.split('.');
   if (!exp || !sig || Number(exp) < Date.now()) return false;
   const a = Buffer.from(sig), b = Buffer.from(sign(exp));
   return a.length === b.length && timingSafeEqual(a, b);

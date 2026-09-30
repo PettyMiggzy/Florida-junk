@@ -54,7 +54,7 @@ h2{font-size:clamp(38px,5.6vw,76px);line-height:1;margin:0 0 14px}.lead{color:va
 .cb{padding:6px 22px 24px;display:flex;flex-direction:column;flex:1}.cb h3{font-size:26px;margin:0 0 6px}.cb p{color:var(--mut);margin:0 0 16px;flex:1;font-size:15px}
 .lnk{color:var(--g);font-weight:800;font-size:14px}.lnk:hover{letter-spacing:.03em}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1400px;margin:auto}
-.why-img{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 0 80px #39ff141f}.why-img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 50%}
+.why-img{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 0 80px #39ff141f}.why-img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:60% 50%}
 .tag{position:absolute;left:16px;bottom:16px;background:#050505cc;backdrop-filter:blur(8px);border:1px solid var(--g);color:var(--g);padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px}
 .feat{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line)}.feat b{font-family:Anton;font-size:34px;color:var(--g);font-weight:400;min-width:54px}
 .feat h3{font-size:24px;margin:0 0 4px}.feat p{margin:0;color:var(--mut)}
@@ -104,4 +104,4 @@ h1{font-size:clamp(44px,13.5vw,70px)}.cta .btn{flex:1;min-width:140px;padding:14
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#0e130e;color:#fff;border:1px solid var(--g)}
 
 .truck-m{display:none}
-@media(max-width:900px){.badge{display:none}.truck-m{display:block;order:-1;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:60% 40%;border-radius:18px;border:1px solid var(--line);box-shadow:0 0 60px #39ff1433}}
+@media(max-width:900px){.badge{display:none}.truck-m{display:block;order:-1;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 50%;border-radius:18px;border:1px solid var(--line);box-shadow:0 0 60px #39ff1433}}

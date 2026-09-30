@@ -5,16 +5,17 @@ let jobs=[],map,layer,calDate=new Date(),photoData=null;
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const money=n=>'$'+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:0});
 const fmt=d=>d?new Date(d).toLocaleString([], {weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Not scheduled';
-async function api(u,o={}){const r=await fetch(u,{credentials:'same-origin',headers:{'Content-Type':'application/json'},...o});if(r.status===401)throw new Error('auth');if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||'error');return r.json()}
+const tk=()=>{try{return localStorage.getItem('jj_tok')}catch{return null}};
+async function api(u,o={}){const t=tk();const r=await fetch(u,{credentials:'same-origin',...o,headers:{'Content-Type':'application/json',...(t?{Authorization:'Bearer '+t}:{})}});if(r.status===401)throw new Error('auth');if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||'error');return r.json()}
 
 async function boot(){
   let ok=false;try{ok=(await api('/api/login')).ok}catch{}
   $('#gate').hidden=ok;$('#app').hidden=!ok;if(ok)load();
 }
 $('#login').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';
-  try{await api('/api/login',{method:'POST',body:JSON.stringify({password:$('#pw').value})});$('#pw').value='';boot()}
-  catch(x){$('#lerr').textContent=x.message==='auth'?'Wrong password':x.message}};
-$('#logout').onclick=async()=>{await api('/api/login',{method:'DELETE'});location.reload()};
+  try{const r=await api('/api/login',{method:'POST',body:JSON.stringify({password:$('#pw').value.trim()})});try{localStorage.setItem('jj_tok',r.token)}catch{}$('#pw').value='';boot()}
+  catch(x){$('#lerr').textContent=x.message==='auth'?'Wrong password':'Connection problem — try again'}};
+$('#logout').onclick=async()=>{await api('/api/login',{method:'DELETE'});try{localStorage.removeItem('jj_tok')}catch{}location.reload()};
 async function load(){try{jobs=(await api('/api/admin')).jobs}catch(e){if(e.message==='auth')return boot();$('#upcoming').textContent='Could not load: '+e.message;return}render()}
 
 const TITLES={dash:'Dashboard',cal:'Schedule',map:'Map',jobs:'All Jobs'};
@@ -101,3 +102,5 @@ F.onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(
   try{await api('/api/admin',{method:d.id?'PUT':'POST',body:JSON.stringify(d)});$('#modal').hidden=true;load()}catch(x){$('#gmsg').textContent='Save failed: '+x.message}};
 $('#del').onclick=async()=>{if(!confirm('Delete this job permanently?'))return;await api('/api/admin?id='+F.elements.id.value,{method:'DELETE'});$('#modal').hidden=true;load()};
 boot();
+
+$('#showpw').onchange=e=>$('#pw').type=e.target.checked?'text':'password';

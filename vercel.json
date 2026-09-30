@@ -1,1 +1,1 @@
-{"redirects":[{"source":"/admin","destination":"/admin/","permanent":false}]}
+{"redirects":[{"source":"/admin","destination":"/admin/","permanent":false}],"headers":[{"source":"/admin/(.*)","headers":[{"key":"Cache-Control","value":"no-cache"}]}]}
