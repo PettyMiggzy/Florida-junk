@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Command Center | Junk Junkies Florida</title>
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="admin.css">
+</head><body>
+<div id="gate" class="gate"><form id="login"><img src="/assets/logo-640.png" alt="" width="150" height="150"><h1>COMMAND CENTER</h1><input id="pw" type="password" placeholder="Password" autocomplete="current-password" autofocus><button class="btn">Unlock</button><p id="lerr"></p></form></div>
+
+<div id="app" hidden>
+<aside>
+  <div class="logo"><img src="/assets/logo-640.png" alt="" width="44" height="44"><b>JJ<em>F</em></b></div>
+  <nav id="tabs">
+    <button data-t="dash" class="on">📊 <span>Dashboard</span></button>
+    <button data-t="cal">📅 <span>Schedule</span></button>
+    <button data-t="map">📍 <span>Map</span></button>
+    <button data-t="jobs">🧾 <span>All Jobs</span></button>
+  </nav>
+  <button id="logout" class="ghost">Log out</button>
+</aside>
+<main>
+  <header><h2 id="title">Dashboard</h2><div><button class="btn" id="add">+ New Job</button></div></header>
+
+  <section id="t-dash">
+    <div class="stats" id="stats"></div>
+    <div class="cols">
+      <div class="panel"><h3>Upcoming</h3><div id="upcoming" class="list"></div></div>
+      <div class="panel"><h3>New Leads <small>(from website)</small></h3><div id="leads" class="list"></div></div>
+    </div>
+  </section>
+
+  <section id="t-cal" hidden>
+    <div class="calhead"><button class="ghost" id="prev">‹</button><h3 id="calttl"></h3><button class="ghost" id="next">›</button></div>
+    <div class="cal" id="cal"></div>
+  </section>
+
+  <section id="t-map" hidden>
+    <div class="maplegend"><i class="d lead"></i>Lead <i class="d scheduled"></i>Scheduled <i class="d completed"></i>Completed <i class="d pub"></i>Public</div>
+    <div id="map"></div>
+  </section>
+
+  <section id="t-jobs" hidden>
+    <div class="filters"><input id="q" placeholder="Search name, phone, address…"><select id="fs"><option value="">All statuses</option><option>lead</option><option>scheduled</option><option>completed</option><option>cancelled</option></select></div>
+    <div id="table" class="list"></div>
+  </section>
+</main>
+</div>
+
+<div id="modal" class="modal" hidden><form id="jf">
+  <h3 id="mt">New Job</h3><input type="hidden" name="id">
+  <div class="r2"><label>Customer<input name="name" required></label><label>Phone<input name="phone" type="tel"></label></div>
+  <div class="r2"><label>Email<input name="email" type="email"></label><label>Service<select name="service" id="svc"></select></label></div>
+  <label>Address<div class="addr"><input name="address" id="address" placeholder="Street, City, FL"><button type="button" class="ghost" id="geo">📍 Find on map</button></div></label>
+  <div class="r2"><label>City<input name="city"></label><label>Status<select name="status"><option>lead</option><option>scheduled</option><option>completed</option><option>cancelled</option></select></label></div>
+  <div class="r2"><label>Date &amp; time<input name="scheduled_at" type="datetime-local"></label><label>Price ($)<input name="price" type="number" step="0.01"></label></div>
+  <label>Job details<textarea name="details" rows="2"></textarea></label>
+  <label>Private notes<textarea name="notes" rows="2"></textarea></label>
+  <div class="pub"><label class="chk"><input type="checkbox" name="published"> Show on public “Jobs We’ve Cleared” map (completed jobs only)</label>
+    <div class="r2"><label>Public title<input name="title" placeholder="Full garage cleanout in Davenport"></label><label>Photo<input type="file" id="photo" accept="image/*"></label></div>
+    <img id="pv" alt="" hidden></div>
+  <input type="hidden" name="lat"><input type="hidden" name="lng">
+  <div class="acts"><button type="button" class="ghost danger" id="del">Delete</button><span></span><button type="button" class="ghost" id="cancel">Cancel</button><button class="btn">Save</button></div>
+  <p id="gmsg"></p>
+</form></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="admin.js"></script>
+</body></html>
