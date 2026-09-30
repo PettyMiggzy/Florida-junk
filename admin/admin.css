@@ -5,11 +5,11 @@
 .ghost{background:transparent;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;cursor:pointer}.ghost:hover{border-color:var(--g);color:var(--g)}.danger:hover{border-color:var(--red);color:var(--red)}
 input,select,textarea{width:100%;font:inherit;color:#fff;background:#060906;border:1px solid #243424;border-radius:10px;padding:11px 12px}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g)}
 .gate{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#0d2a07,#050505 65%)}
-#login{display:grid;gap:14px;text-align:center;width:min(340px,90vw)}#login img{margin:auto;border-radius:50%;filter:drop-shadow(0 0 40px #39ff1466)}
+#login{display:grid;gap:14px;text-align:center;width:min(340px,90vw)}#login img{margin:auto;filter:drop-shadow(0 0 40px #39ff1466)}
 h1{font-size:28px;letter-spacing:.14em;margin:0}#lerr{color:var(--red);margin:0;min-height:1.4em}
 #app{display:grid;grid-template-columns:210px 1fr;min-height:100vh}
 aside{background:#080b08;border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:18px;position:sticky;top:0;height:100vh}
-.logo{display:flex;align-items:center;gap:10px;font-size:20px}.logo img{border-radius:50%}.logo em{color:var(--g);font-style:normal}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px}.logo img{}.logo em{color:var(--g);font-style:normal}
 nav{display:grid;gap:6px}nav button{text-align:left;background:0;border:0;color:var(--mut);padding:12px 14px;border-radius:12px;cursor:pointer;font:600 15px system-ui}nav button.on,nav button:hover{background:#12200f;color:var(--g)}
 #logout{margin-top:auto}
 main{padding:24px 28px;min-width:0}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}h2{margin:0;font-size:28px}
