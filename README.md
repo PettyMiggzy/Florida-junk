@@ -9,3 +9,7 @@ Storage: private Vercel Blob store `junk-junkies-data` (BLOB_READ_WRITE_TOKEN). 
 
 ## Google reviews
 Find the Place ID at https://developers.google.com/maps/documentation/places/web-service/place-id and set `GOOGLE_PLACE_ID` in `main.js`.
+
+## SEO
+`python3 scripts/build_seo.py` regenerates `/services/*`, `/areas/*`, `sitemap.xml`, `robots.txt` from `scripts/seo_data.py`.
+Edit copy/cities/services in `seo_data.py`, re-run, commit. Canonical domain is `SITE` in that file.

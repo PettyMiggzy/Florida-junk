@@ -27,7 +27,7 @@ em{color:var(--g);font-style:normal}
 .kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:#0c120c;padding:7px 16px;border-radius:999px;font-weight:700;font-size:13px;color:var(--g);letter-spacing:.08em;text-transform:uppercase}
 .kicker i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 12px var(--g);animation:pulse 1.6s infinite}
 @keyframes pulse{50%{opacity:.3}}
-h1{font-size:clamp(48px,7vw,104px);line-height:.95;margin:.25em 0}h1 span{color:var(--g);text-shadow:0 0 40px #39ff1466}
+h1:not(.kicker),.h1like{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(48px,7vw,104px);line-height:.95;margin:.25em 0}h1 span,.h1like span{color:var(--g);text-shadow:0 0 40px #39ff1466}
 .sub{font-size:clamp(17px,1.6vw,21px);color:#cdd5cd;max-width:560px}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0}
 .chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}.chips li{padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-size:13px;font-weight:600}
@@ -90,7 +90,7 @@ footer img{}footer h4{font-family:Anton;font-size:26px;margin:0;color:var(--g);f
 .nav nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:none}.nav nav a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--line);color:#fff}
 .badge{max-width:230px}.kicker{font-size:11px;padding:6px 12px;letter-spacing:.05em}
 .hero{min-height:auto}.hero-in{padding:28px 5vw 70px;gap:18px;text-align:left}.scroll{display:none}
-h1{font-size:clamp(44px,13.5vw,70px)}.cta .btn{flex:1;min-width:140px;padding:14px 16px}
+h1:not(.kicker),.h1like{font-size:clamp(44px,13.5vw,70px)}.cta .btn{flex:1;min-width:140px;padding:14px 16px}
 .bar span{font-size:12px}.bar{justify-content:center}
 .ticker{margin-top:-6px}
 .sec{padding:80px 5vw}.bar a{display:none}.brand span{font-size:17px}
@@ -105,3 +105,21 @@ h1{font-size:clamp(44px,13.5vw,70px)}.cta .btn{flex:1;min-width:140px;padding:14
 
 .truck-m{display:none}
 @media(max-width:900px){.badge{display:none}.truck-m{display:block;order:-1;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 50%;border-radius:18px;border:1px solid var(--line);box-shadow:0 0 60px #39ff1433}}
+
+h1.kicker{font-family:Inter,system-ui,sans-serif;line-height:1.3;margin:0;text-transform:uppercase}
+.card h3 a:hover{color:var(--g)}.cb .lnk+.lnk{margin-left:14px;color:#fff}
+.pills li a{display:block;color:inherit}
+/* seo subpages */
+.pg-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;max-width:1400px;margin:auto;padding:50px 5vw 30px}
+.pg-in .sub{max-width:640px}.pg-hero h1{font-size:clamp(40px,5.4vw,78px)!important;line-height:1!important;margin:.3em 0!important}.pg-hero h1 span{display:block;color:var(--g)}
+.pg-img{width:100%;height:auto;border-radius:var(--r);border:1px solid var(--line);box-shadow:0 0 70px #39ff1426;aspect-ratio:4/3;object-fit:cover}
+.crumbs{font-size:13px;color:var(--mut);margin-bottom:14px}.crumbs a{color:var(--g)}
+.prose{max-width:900px;margin:auto}.prose h2{font-size:clamp(28px,3.6vw,44px);margin:1.4em 0 .5em}.prose h2:first-child{margin-top:0}.prose p{color:#cfd8cf;font-size:17px}.prose a{color:var(--g)}
+.ticks{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}.ticks li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}.ticks li::before{content:"✓ ";color:var(--g);font-weight:800}
+.linkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}.linkgrid a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;color:#fff!important;font-weight:600;transition:.2s}.linkgrid a:hover{border-color:var(--g);color:var(--g)!important}
+.foot{display:block!important}.fcols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;max-width:1300px;margin:auto}
+.foot h5{font:400 20px Anton;text-transform:uppercase;color:var(--g);margin:0 0 10px}.foot .fcols a{display:block;color:var(--mut);padding:3px 0;font-size:14px}.foot .fcols a:hover{color:var(--g)}
+.foot .copy{max-width:1300px;margin:30px auto 0;border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:900px){.pg-hero{grid-template-columns:1fr;padding-top:26px}.fcols{grid-template-columns:1fr}}
+
+.cta .btn{white-space:nowrap}@media(max-width:480px){.pg-hero .cta .btn{padding:14px 18px;font-size:15px;flex:1}}
