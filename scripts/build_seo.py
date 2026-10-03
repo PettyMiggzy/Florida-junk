@@ -54,7 +54,7 @@ def footer():
     <div><h5>Services</h5>{sv}</div>
     <div><h5>Service Areas</h5>{ar}</div>
   </div>
-  <p class="mut copy">© <span id="y"></span> {BRAND} · <a href="/">Home</a> · <a href="/admin/">Staff</a></p>
+  <p class="mut copy">© <span id="y"></span> {BRAND} · <a href="/">Home</a> · Also serving Central Indiana: <a href="https://junkjunkiesindiana.com/">Junk Removal Indianapolis, IN</a> · <a href="/admin/">Staff</a></p>
 </footer>
 <a class="sticky" href="tel:{PHONE_TEL}">📞 Call {PHONE_DISPLAY}</a>
 <script src="/main.js"></script>
