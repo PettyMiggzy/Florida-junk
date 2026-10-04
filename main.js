@@ -16,7 +16,7 @@ f.addEventListener('submit',async e=>{
   if(!d.details)d.details='Quick quote request from the top of the page'+(d.service?' ('+d.service+')':'');
   m.textContent='Sending…';
   try{
-    const r=await fetch('https://formsubmit.co/ajax/junkjunkiesflorida@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({...d,_subject:'New junk lead: '+d.name+' ('+d.city+')',_template:'table',_captcha:'false'})});
+    const r=await fetch('https://formsubmit.co/ajax/junkjunkiestexas@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({...d,_subject:'New junk lead: '+d.name+' ('+d.city+')',_template:'table',_captcha:'false'})});
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(()=>{});
     if(!r.ok)throw 0;
     f.reset();m.textContent="✅ Got it! We'll contact you shortly.";
