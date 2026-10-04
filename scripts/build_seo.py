@@ -105,7 +105,7 @@ def service_page(s):
     body = f'''<body>
 {nav()}
 <main>
-<section class="pg-hero"><div class="pg-in">
+<section class="pg-hero"><div class=\"reelbg\" aria-hidden=\"true\"><img src=\"/assets/reel/r0.webp\" alt=\"\" loading=\"eager\" class=\"on\"><img src=\"/assets/reel/r1.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r2.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r3.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r4.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r5.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r6.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r7.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r8.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r9.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r10.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r11.webp\" alt=\"\" loading=\"lazy\" class=\"\"></div><div class="pg-in">
   {crumbs_html(items)}
   <p class="kicker"><i></i> Junk Junkies Florida · Haines City, FL</p>
   <h1>{e(s["name"])} <span>in Haines City &amp; Central Florida</span></h1>
@@ -114,7 +114,7 @@ def service_page(s):
 </div>{hero_form(s["name"])}</section>
 
 <section class="sec"><div class="prose">
-  <img class="pg-img" src="/assets/{s["img"]}.jpg" alt="{e(s["name"])} by Junk Junkies Florida in Central Florida" width="800" height="450" loading="lazy">
+  <div class="reelbg inl" role="img" aria-label="Real {e(s["name"])} jobs by Junk Junkies Florida"><img src=\"/assets/reel/r2.webp\" alt=\"\" loading=\"lazy\" class=\"on\"><img src=\"/assets/reel/r3.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r4.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r5.webp\" alt=\"\" loading=\"lazy\" class=\"\"></div>
   <h2>What our {e(s["name"].lower())} service covers</h2>
   <ul class="ticks">{"".join(f"<li>{e(t)}</li>" for t in s["takes"])}</ul>
   <h2>How it works and what it costs</h2>
@@ -153,7 +153,7 @@ def city_page(c):
     body = f'''<body>
 {nav()}
 <main>
-<section class="pg-hero"><div class="pg-in">
+<section class="pg-hero"><div class=\"reelbg\" aria-hidden=\"true\"><img src=\"/assets/reel/r0.webp\" alt=\"\" loading=\"eager\" class=\"on\"><img src=\"/assets/reel/r1.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r2.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r3.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r4.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r5.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r6.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r7.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r8.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r9.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r10.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r11.webp\" alt=\"\" loading=\"lazy\" class=\"\"></div><div class="pg-in">
   {crumbs_html(items)}
   <p class="kicker"><i></i> {e(c["county"])} · Florida</p>
   <h1>Junk Removal <span>in {e(n)}, FL</span></h1>
@@ -162,7 +162,7 @@ def city_page(c):
 </div>{hero_form()}</section>
 
 <section class="sec"><div class="prose">
-  <img class="pg-img" src="/assets/truck-branded.jpg" alt="Junk Junkies Florida junk removal truck serving {e(n)}, FL" width="1280" height="960" loading="lazy">
+  <div class="reelbg inl" role="img" aria-label="Real Junk Junkies Florida jobs near {e(n)}, FL"><img src=\"/assets/reel/r6.webp\" alt=\"\" loading=\"lazy\" class=\"on\"><img src=\"/assets/reel/r7.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r8.webp\" alt=\"\" loading=\"lazy\" class=\"\"><img src=\"/assets/reel/r9.webp\" alt=\"\" loading=\"lazy\" class=\"\"></div>
   <h2>{e(n)} junk removal you can count on</h2>
   <p>{e(c["local"])}</p>
   {hq}

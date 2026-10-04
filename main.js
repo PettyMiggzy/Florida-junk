@@ -46,3 +46,6 @@ const GOOGLE_PLACE_ID='';
 if(GOOGLE_PLACE_ID){$('#reviews').hidden=false;
   $('#rv-write').href='https://search.google.com/local/writereview?placeid='+GOOGLE_PLACE_ID;
   $('#rv-read').href='https://search.google.com/local/reviews?placeid='+GOOGLE_PLACE_ID}
+// real-photo reels: crossfade every 4.5s
+document.querySelectorAll('.reelbg').forEach(function(r,k){var im=r.children,n=im.length,i=0;if(n<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+setInterval(function(){im[i].classList.remove('on');i=(i+1)%n;im[i].classList.add('on')},4500+k*300)});

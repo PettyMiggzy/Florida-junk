@@ -1,7 +1,77 @@
-{"redirects":[{"source":"/admin","destination":"/admin/","permanent":false}],
- "headers":[
-  {"source":"/admin/(.*)","headers":[{"key":"Cache-Control","value":"no-cache"},{"key":"X-Robots-Tag","value":"noindex, nofollow"}]},
-  {"source":"/api/(.*)","headers":[{"key":"X-Robots-Tag","value":"noindex"}]},
-  {"source":"/assets/(.*)","headers":[{"key":"Cache-Control","value":"public, max-age=86400, stale-while-revalidate=604800"}]},
-  {"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"}]}
- ]}
+{
+ "redirects": [
+  {
+   "source": "/admin",
+   "destination": "/admin/",
+   "permanent": false
+  },
+  {
+   "source": "/(.*)",
+   "has": [
+    {
+     "type": "host",
+     "value": "junkjunkiesflorida.com"
+    }
+   ],
+   "destination": "https://junkjunkiesflorida.site/$1",
+   "permanent": true
+  },
+  {
+   "source": "/(.*)",
+   "has": [
+    {
+     "type": "host",
+     "value": "www.junkjunkiesflorida.com"
+    }
+   ],
+   "destination": "https://junkjunkiesflorida.site/$1",
+   "permanent": true
+  }
+ ],
+ "headers": [
+  {
+   "source": "/admin/(.*)",
+   "headers": [
+    {
+     "key": "Cache-Control",
+     "value": "no-cache"
+    },
+    {
+     "key": "X-Robots-Tag",
+     "value": "noindex, nofollow"
+    }
+   ]
+  },
+  {
+   "source": "/api/(.*)",
+   "headers": [
+    {
+     "key": "X-Robots-Tag",
+     "value": "noindex"
+    }
+   ]
+  },
+  {
+   "source": "/assets/(.*)",
+   "headers": [
+    {
+     "key": "Cache-Control",
+     "value": "public, max-age=86400, stale-while-revalidate=604800"
+    }
+   ]
+  },
+  {
+   "source": "/(.*)",
+   "headers": [
+    {
+     "key": "X-Content-Type-Options",
+     "value": "nosniff"
+    },
+    {
+     "key": "Referrer-Policy",
+     "value": "strict-origin-when-cross-origin"
+    }
+   ]
+  }
+ ]
+}
