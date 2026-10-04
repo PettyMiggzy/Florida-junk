@@ -41,7 +41,29 @@
       <ul class="chips"><li>Free estimates</li><li>Same-day possible</li><li>We do all the lifting</li><li>Responsible disposal</li></ul>
     </div>
     <img class="truck-m" src="/assets/truck-branded.jpg" alt="Junk Junkies Florida junk removal truck" width="1280" height="960">
-    <div class="badge"><div class="ring"></div><img src="/assets/logo-640.png" alt="Junk Junkies Florida" width="460" height="460"></div>
+    <div id="quote" class="herof"><h3>Get your free quote in minutes</h3><p class="hfs">Tell us what you need. We reach out fast with a flat price.</p>
+      <form class="leadform" novalidate>
+        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name">
+        <input name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
+        <div class="row"><input name="city" required placeholder="City / ZIP" aria-label="City or ZIP"><select name="service" aria-label="Service needed"><option value="">Service needed</option>
+<option>Residential Junk Removal</option>
+<option>Furniture Removal</option>
+<option>Appliance Removal</option>
+<option>Mattress Removal</option>
+<option>Garage Cleanouts</option>
+<option>Estate Cleanouts</option>
+<option>Hoarder Cleanup</option>
+<option>Storage Unit Cleanouts</option>
+<option>Yard Waste Removal</option>
+<option>Construction Debris Removal</option>
+<option>Shed Removal</option>
+<option>Hot Tub Removal</option>
+<option>Commercial Junk Removal</option>
+<option>Property Cleanouts</option>
+</select></div>
+        <button class="btn" type="submit">Get My Free Quote</button><p class="fmsg" role="status"></p>
+      </form><p class="hfo">or call / text <a href="tel:+13213510284">321-351-0284</a></p></div>
   </div>
   <a href="#services" class="scroll" aria-label="Scroll">↓</a>
 </section>
@@ -99,7 +121,7 @@
   </div>
 </section>
 
-<section id="quote" class="sec dark quote">
+<section id="quote-more" class="sec dark quote">
   <div class="glow g1"></div>
   <div class="quote-wrap">
     <div class="reveal">
@@ -108,7 +130,7 @@
       <a class="bigphone" href="tel:+13213510284">321-351-0284</a>
       <p class="mut">Or email <a href="mailto:junkjunkiesflorida@gmail.com">junkjunkiesflorida@gmail.com</a></p>
     </div>
-    <form id="lead" class="reveal" novalidate>
+    <form id="lead" class="reveal leadform" novalidate>
       <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="row"><label>Name<input name="name" required autocomplete="name"></label><label>Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>
       <div class="row"><label>Email (optional)<input name="email" type="email" autocomplete="email"></label><label>City / ZIP<input name="city" required></label></div>
@@ -131,7 +153,7 @@
       <label>Timing<select name="timing"><option>ASAP / Same day</option><option>This week</option><option>Flexible</option></select></label></div>
       <label>What needs to go?<textarea name="details" rows="4" required placeholder="Couch, 2 mattresses, garage full of boxes…"></textarea></label>
       <button class="btn" type="submit">Send My Request</button>
-      <p id="msg" role="status"></p>
+      <p id="msg" class="fmsg" role="status"></p>
     </form>
   </div>
 </section>

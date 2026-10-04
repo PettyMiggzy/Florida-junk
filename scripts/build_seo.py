@@ -60,17 +60,28 @@ def footer():
 <script src="/main.js"></script>
 </body></html>'''
 
+def hero_form(pre=""):
+    opts = "".join(f'<option{" selected" if s["name"]==pre else ""}>{e(s["name"])}</option>' for s in SERVICES)
+    return f'''<div id="quote" class="herof"><h3>Get your free quote in minutes</h3><p class="hfs">Tell us what you need. We reach out fast with a flat price.</p>
+  <form class="leadform" novalidate>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name">
+    <input name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
+    <div class="row"><input name="city" required placeholder="City / ZIP" aria-label="City or ZIP"><select name="service" aria-label="Service needed"><option value="">Service needed</option>{opts}</select></div>
+    <button class="btn" type="submit">Get My Free Quote</button><p class="fmsg" role="status"></p>
+  </form><p class="hfo">or call / text <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></p></div>'''
+
 def form(pre=""):
     opts = "".join(f'<option{" selected" if s["name"]==pre else ""}>{e(s["name"])}</option>' for s in SERVICES)
-    return f'''<section id="quote" class="sec dark quote"><div class="quote-wrap">
+    return f'''<section id="quote-more" class="sec dark quote"><div class="quote-wrap">
   <div><p class="eyebrow">Free quote</p><h2>Get a <em>flat price</em></h2><p class="lead">Tell us what you need hauled. We reach out fast with an upfront quote.</p><a class="bigphone" href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></div>
-  <form id="lead" novalidate>
+  <form id="lead" class="leadform" novalidate>
     <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="row"><label>Name<input name="name" required autocomplete="name"></label><label>Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>
     <div class="row"><label>Email (optional)<input name="email" type="email" autocomplete="email"></label><label>City / ZIP<input name="city" required></label></div>
     <div class="row"><label>Service<select name="service" id="svc"><option value="">Select a service…</option>{opts}</select></label><label>Timing<select name="timing"><option>ASAP / Same day</option><option>This week</option><option>Flexible</option></select></label></div>
     <label>What needs to go?<textarea name="details" rows="4" required placeholder="Describe the items or space…"></textarea></label>
-    <button class="btn" type="submit">Send My Request</button><p id="msg" role="status"></p>
+    <button class="btn" type="submit">Send My Request</button><p id="msg" class="fmsg" role="status"></p>
   </form></div></section>'''
 
 def faq_html(faqs):
@@ -100,9 +111,10 @@ def service_page(s):
   <h1>{e(s["name"])} <span>in Haines City &amp; Central Florida</span></h1>
   <p class="sub">{e(s["intro"])}</p>
   <div class="cta"><a class="btn" href="#quote">Get a Free Quote</a><a class="btn ghost" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a></div>
-</div><img class="pg-img" src="/assets/{s["img"]}.jpg" alt="{e(s["name"])} by Junk Junkies Florida in Central Florida" width="800" height="450" fetchpriority="high"></section>
+</div>{hero_form(s["name"])}</section>
 
 <section class="sec"><div class="prose">
+  <img class="pg-img" src="/assets/{s["img"]}.jpg" alt="{e(s["name"])} by Junk Junkies Florida in Central Florida" width="800" height="450" loading="lazy">
   <h2>What our {e(s["name"].lower())} service covers</h2>
   <ul class="ticks">{"".join(f"<li>{e(t)}</li>" for t in s["takes"])}</ul>
   <h2>How it works and what it costs</h2>
@@ -147,9 +159,10 @@ def city_page(c):
   <h1>Junk Removal <span>in {e(n)}, FL</span></h1>
   <p class="sub">{e(c["intro"])}</p>
   <div class="cta"><a class="btn" href="#quote">Get a Free Quote</a><a class="btn ghost" href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a></div>
-</div><img class="pg-img" src="/assets/truck-branded.jpg" alt="Junk Junkies Florida junk removal truck serving {e(n)}, FL" width="1280" height="960" fetchpriority="high"></section>
+</div>{hero_form()}</section>
 
 <section class="sec"><div class="prose">
+  <img class="pg-img" src="/assets/truck-branded.jpg" alt="Junk Junkies Florida junk removal truck serving {e(n)}, FL" width="1280" height="960" loading="lazy">
   <h2>{e(n)} junk removal you can count on</h2>
   <p>{e(c["local"])}</p>
   {hq}
