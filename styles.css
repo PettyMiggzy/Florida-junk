@@ -145,3 +145,4 @@ h1.kicker{font-family:Inter,system-ui,sans-serif;line-height:1.3;margin:0;text-t
 .pg-hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(100deg,#050505 10%,#050505cc 50%,#05050590)}
 .reelbg.inl{position:relative;inset:auto;z-index:0;aspect-ratio:16/9;border-radius:var(--r);border:1px solid var(--line);margin-bottom:22px}
 .reelbg.inl img.on{opacity:1}
+.herof textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:14px;color:inherit;font:inherit;padding:12px 14px;resize:none}.herof textarea:focus{outline:0;border-color:var(--g)}

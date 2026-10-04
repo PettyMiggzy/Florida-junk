@@ -68,6 +68,7 @@ def hero_form(pre=""):
     <input name="name" required autocomplete="name" placeholder="Your name" aria-label="Your name">
     <input name="phone" type="tel" inputmode="tel" required autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
     <div class="row"><input name="city" required placeholder="City / ZIP" aria-label="City or ZIP"><select name="service" aria-label="Service needed"><option value="">Service needed</option>{opts}</select></div>
+    <textarea name="details" rows="2" maxlength="600" placeholder="Notes (what needs to go, stairs, timing...)" aria-label="Notes"></textarea>
     <button class="btn" type="submit">Get My Free Quote</button><p class="fmsg" role="status"></p>
   </form><p class="hfo">or call / text <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></p></div>'''
 
