@@ -2,22 +2,22 @@
  "redirects": [
   {
    "source": "/crm",
-   "destination": "https://www.junkjunkiesindiana.com/crm/",
+   "destination": "https://junkjunkiestexas.com/crm/",
    "permanent": false
   },
   {
    "source": "/crm/",
-   "destination": "https://www.junkjunkiesindiana.com/crm/",
+   "destination": "https://junkjunkiestexas.com/crm/",
    "permanent": false
   },
   {
    "source": "/CRM",
-   "destination": "https://www.junkjunkiesindiana.com/crm/",
+   "destination": "https://junkjunkiestexas.com/crm/",
    "permanent": false
   },
   {
    "source": "/CRM/",
-   "destination": "https://www.junkjunkiesindiana.com/crm/",
+   "destination": "https://junkjunkiestexas.com/crm/",
    "permanent": false
   },
   {
