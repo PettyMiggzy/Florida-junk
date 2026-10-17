@@ -1,4 +1,4 @@
-SITE = "https://junkjunkiesflorida.site"
+SITE = "https://www.junkjunkiesflorida.com"
 PHONE_DISPLAY = "321-351-0284"
 PHONE_TEL = "+13213510284"
 EMAIL = "junkjunkiesflorida@gmail.com"

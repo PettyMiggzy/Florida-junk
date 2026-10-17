@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://junkjunkiesflorida.site/sitemap.xml
+Sitemap: https://www.junkjunkiesflorida.com/sitemap.xml
