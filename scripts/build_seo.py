@@ -5,6 +5,11 @@ from seo_data import *
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TODAY = datetime.date.today().isoformat()
 e = html.escape
+
+def svc_card(o, suffix=""):
+    return (f'<article class="card"><div class="ph"><img loading="lazy" src="/assets/{o["img"]}.jpg" alt="{e(o["name"])}{suffix}" width="800" height="450"></div>'
+            f'<div class="cb"><h3><a href="/services/{o["slug"]}/">{e(o["name"])}</a></h3><p>{e(o["blurb"])}</p><a href="/services/{o["slug"]}/" class="lnk">Learn more &rarr;</a></div></article>')
+
 OG = f"{SITE}/assets/og-image.jpg"
 
 def write(path, content):
@@ -101,7 +106,7 @@ def service_page(s):
     items = [("Home","/"),("Services","/#services"),(s["name"],path)]
     sd = ld({"@context":"https://schema.org","@type":"Service","name":s["name"],"serviceType":s["name"],"description":s["intro"],"url":SITE+path,
              "provider":business_ref(),"areaServed":[{"@type":"City","name":c["name"]} for c in CITIES],"image":f"{SITE}/assets/{s['img']}.jpg"})
-    others = "".join(f'<a href="/services/{o["slug"]}/">{e(o["name"])}</a>' for o in SERVICES if o["slug"] != s["slug"])
+    others = "".join(svc_card(o) for o in SERVICES if o["slug"] != s["slug"])
     cities = "".join(f'<a href="/areas/{c["slug"]}/">{e(s["name"])} in {e(c["name"])}</a>' for c in CITIES)
     body = f'''<body>
 {nav()}
@@ -126,7 +131,7 @@ def service_page(s):
 <section class="sec dark"><div class="prose"><h2>{e(s["name"])} FAQs</h2>{faq_html(s["faqs"])}</div></section>
 
 <section class="sec"><div class="prose"><h2>{e(s["name"])} near you</h2><div class="linkgrid">{cities}</div>
-<h2>Other junk removal services</h2><div class="linkgrid">{others}</div></div></section>
+<h2>Other junk removal services</h2><div class="cards">{others}</div></div></section>
 {form(s["name"])}
 </main>
 {footer()}'''
@@ -148,7 +153,7 @@ def city_page(c):
     faqs = city_faqs(c)
     sd = ld({"@context":"https://schema.org","@type":"Service","name":f"Junk Removal in {n}, FL","serviceType":"Junk removal","url":SITE+path,
              "provider":business_ref(),"areaServed":{"@type":"City","name":n,"containedInPlace":{"@type":"State","name":"Florida"}},"description":c["intro"]})
-    svc = "".join(f'<a href="/services/{s["slug"]}/">{e(s["name"])} in {e(n)}</a>' for s in SERVICES)
+    svc = "".join(svc_card(s, f" in {n}, FL") for s in SERVICES)
     near = "".join(f'<a href="/areas/{x.lower().replace(" ","-")}/">Junk Removal {e(x)}</a>' for x in c["nearby"])
     hq = f"<p>Our shop is at <strong>180 Dyson Rd, Haines City, FL 33844</strong>.</p>" if c.get("hq") else f"<p>We are based at 180 Dyson Rd in Haines City and travel to {e(n)} ({e(c['county'])}) for jobs of every size.</p>"
     body = f'''<body>
@@ -168,7 +173,7 @@ def city_page(c):
   <p>{e(c["local"])}</p>
   {hq}
   <h2>Services in {e(n)}</h2>
-  <div class="linkgrid">{svc}</div>
+  <div class="cards">{svc}</div>
 </div></section>
 
 <section class="sec dark"><div class="prose"><h2>Junk removal in {e(n)} — FAQs</h2>{faq_html(faqs)}</div></section>
