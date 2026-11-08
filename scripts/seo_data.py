@@ -1,6 +1,6 @@
 SITE = "https://www.junkjunkiesflorida.com"
-PHONE_DISPLAY = "321-351-0284"
-PHONE_TEL = "+13213510284"
+PHONE_DISPLAY = "346-413-9644"
+PHONE_TEL = "+13464139644"
 EMAIL = "junkjunkiesflorida@gmail.com"
 BRAND = "Junk Junkies Florida"
 

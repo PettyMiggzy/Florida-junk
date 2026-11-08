@@ -20,7 +20,7 @@ f.addEventListener('submit',async e=>{
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(()=>{});
     if(!r.ok)throw 0;
     f.reset();m.textContent="✅ Got it! We'll contact you shortly.";
-  }catch{m.textContent='Something went wrong — please call 321-351-0284.'}
+  }catch{m.textContent='Something went wrong — please call 346-413-9644.'}
 })};
 document.querySelectorAll('form.leadform').forEach(wire);
 
